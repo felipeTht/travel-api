@@ -25,6 +25,16 @@ build {
     version = '0.3.0'
 }
 
+task deleteStaticFolder(type: Delete) {
+    def dirName = "src/main/resources/static" 
+    file( dirName ).list().each{
+        f -> 
+            delete "${dirName}/${f}"
+    }
+}
+
+processResources.dependsOn('travel-ui:build')
+
 dependencies {
     implementation('org.springframework.boot:spring-boot-starter-web')
     compileOnly('org.projectlombok:lombok')

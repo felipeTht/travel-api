@@ -15,6 +15,10 @@ node_modules
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
 
+# Angular path deploy
+src/main/resources/static/
+bin
+
 # Java annotation processor (APT)
 .factorypath
 

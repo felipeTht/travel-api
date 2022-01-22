@@ -1,8 +1,19 @@
 <section class="reservation-container">
   <div class="card-container" [@flipState]="flip">
     <div class="card mat-elevation-z2 front">
-      <app-search-flight></app-search-flight>
+      <app-search-flight
+        [loading]="loading"
+        (locationsSelected)="locationsSelected($event)"
+      ></app-search-flight>
     </div>
-    <div class="card mat-elevation-z2 back">Back</div>
+    <div class="card mat-elevation-z2 back">
+      <app-fare-offer
+        [origin]="origin"
+        [destination]="destination"
+        [amount]="amount"
+        [currencyCode]="currency"
+        (back)="toggleFlip()"
+      ></app-fare-offer>
+    </div>
   </div>
 </section>

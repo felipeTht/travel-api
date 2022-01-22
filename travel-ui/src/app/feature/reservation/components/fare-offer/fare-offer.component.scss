@@ -1,0 +1,53 @@
+@import "/src/assets/scss/_variables";
+
+.fare-offer-container {
+  padding: 21px;
+  height: calc(100% - 21px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  .fare {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 50%;
+    .airport {
+      flex: 0 0 20%;
+      padding: 21px;
+      .title {
+        font-size: 12px;
+        color: grey;
+      }
+      .code {
+        font-size: 43px;
+        margin: 19px 0;
+        color: $main-color;
+      }
+      .description {
+        font-size: 17px;
+        font-weight: 700;
+      }
+    }
+    .icon-plane {
+      color: $main-color;
+      font-size: 37px;
+      width: 37px;
+      height: 37px;
+    }
+  }
+  .currency {
+    font-size: 31px;
+    flex: 0 0 20%;
+    color: #261e1e;
+  }
+  .back-btn {
+    width: 40%;
+    background-color: $main-color;
+    color: #fff;
+    &:hover {
+      background-color: #38a5d7;
+    }
+  }
+}

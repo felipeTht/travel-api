@@ -1,0 +1,17 @@
+<section class="fare-offer-container">
+  <div class="fare">
+    <div class="airport">
+      <div class="title">FROM</div>
+      <div class="code">{{ origin?.code }}</div>
+      <div class="description">{{ origin?.name }}</div>
+    </div>
+    <mat-icon class="icon-plane">flight</mat-icon>
+    <div class="airport">
+      <div class="title">TO</div>
+      <div class="code">{{ destination?.code }}</div>
+      <div class="description">{{ destination?.name }}</div>
+    </div>
+  </div>
+  <div class="currency">{{ amount | currency: currencyCode }}</div>
+  <button mat-raised-button class="back-btn" (click)="goBack()">BACK</button>
+</section>

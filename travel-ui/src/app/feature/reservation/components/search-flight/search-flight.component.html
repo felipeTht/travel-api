@@ -1,24 +1,29 @@
 <section class="search-flight">
-  <h2>Book a flight</h2>
+  <h1>Book a flight</h1>
   <div class="form-container">
     <p>Search and select your orgin and destination flight</p>
-    <form class="example-form">
-      <mat-form-field class="example-full-width" appearance="fill">
+    <form [formGroup]="form">
+      <mat-form-field class="origin-field" appearance="fill">
         <mat-label>Origin</mat-label>
         <input
           type="text"
           placeholder="Select origin"
-          aria-label="Number"
           matInput
-          [formControl]="myControl"
-          [matAutocomplete]="auto"
+          formControlName="origin"
+          [matAutocomplete]="originAutocomplete"
         />
-        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <mat-autocomplete
+          autoActiveFirstOption
+          #originAutocomplete="matAutocomplete"
+          (optionSelected)="locationSelected()"
+          [displayWith]="getDescriptionOriginLocation.bind(this)"
+        >
           <mat-option
-            *ngFor="let option of filteredOptions | async"
-            [value]="option"
+            *ngFor="let location of origins"
+            [value]="location.code"
+            [disabled]="!location.code"
           >
-            {{ option }}
+            {{ location.description }}
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
@@ -28,20 +33,26 @@
         <input
           type="text"
           placeholder="Select destination"
-          aria-label="Number"
           matInput
-          [formControl]="myControl"
-          [matAutocomplete]="auto"
+          formControlName="destination"
+          [matAutocomplete]="destinationAutocomplete"
         />
-        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <mat-autocomplete
+          autoActiveFirstOption
+          #destinationAutocomplete="matAutocomplete"
+          (optionSelected)="locationSelected()"
+          [displayWith]="getDescriptionDestinationLocation.bind(this)"
+        >
           <mat-option
-            *ngFor="let option of filteredOptions | async"
-            [value]="option"
+            *ngFor="let location of destinations"
+            [value]="location.code"
+            [disabled]="!location.code"
           >
-            {{ option }}
+            {{ location.description }}
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
     </form>
   </div>
+  <app-spinner *ngIf="loading"></app-spinner>
 </section>

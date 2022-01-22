@@ -1,1 +1,13 @@
-server.port=9000
+server:
+  port: 9000
+  
+  
+api:
+  user: 'user'
+  password: 'secret123'
+  hostName: 'localhost'
+  hostPort: '8080'
+  hostScheme: 'http' 
+  baseUrl: 'http://localhost:8080'
+  airportsEndpoint: '/airports'
+  fareEndPoint: '/fares'

@@ -1,0 +1,11 @@
+@import "/src/assets/scss/_variables";
+
+.header {
+  padding: 17px;
+  margin-bottom: 21px;
+  background-color: #fff;
+  h1 {
+    color: $main-color;
+    font-family: $noto;
+  }
+}

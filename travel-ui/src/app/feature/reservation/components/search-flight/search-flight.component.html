@@ -1,0 +1,47 @@
+<section class="search-flight">
+  <h2>Book a flight</h2>
+  <div class="form-container">
+    <p>Search and select your orgin and destination flight</p>
+    <form class="example-form">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Origin</mat-label>
+        <input
+          type="text"
+          placeholder="Select origin"
+          aria-label="Number"
+          matInput
+          [formControl]="myControl"
+          [matAutocomplete]="auto"
+        />
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+          <mat-option
+            *ngFor="let option of filteredOptions | async"
+            [value]="option"
+          >
+            {{ option }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <mat-icon class="icon-search">travel_explore</mat-icon>
+      <mat-form-field class="destination-field" appearance="fill">
+        <mat-label>Destination</mat-label>
+        <input
+          type="text"
+          placeholder="Select destination"
+          aria-label="Number"
+          matInput
+          [formControl]="myControl"
+          [matAutocomplete]="auto"
+        />
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+          <mat-option
+            *ngFor="let option of filteredOptions | async"
+            [value]="option"
+          >
+            {{ option }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </form>
+  </div>
+</section>

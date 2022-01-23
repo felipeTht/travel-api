@@ -1,5 +1,6 @@
 package com.klm.cases.df.location;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -11,7 +12,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PagedResourcesAssembler;
-import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.PagedModel;
 import org.springframework.http.HttpMethod;
@@ -39,12 +39,14 @@ public class LocationService {
 
 	@Autowired
 	private LocationRepository locationRepository;
-	
+
 	@Autowired
 	private PagedResourcesAssembler<Location> pagedResourcesAssembler;
-	
+
 	@Autowired
 	private LocationModelAssembler locationModelAssembler;
+
+	private final String[] acceptedColumns = { "code", "name", "description" };
 
 	public List<LocationDto> find(String term) {
 
@@ -113,12 +115,14 @@ public class LocationService {
 		return exchange.getStatusCode().equals(HttpStatus.OK);
 	}
 
-	public PagedModel<LocationDto> paginate(String term, int page, int size) {
-		Pageable pageable = PageRequest.of(page, size, Sort.by("description"));
+	public PagedModel<LocationDto> paginate(String term, int page, int size, String sort, String direction) {
+
+		String sortColumn = Arrays.asList(acceptedColumns).contains(sort) ? sort : "description";
+		Pageable pageable = PageRequest.of(page, size, Sort.by(sortColumn).descending());
 		Page<Location> list;
 
 		if (StringUtils.hasText(term)) {
-			list = locationRepository.findByDescriptionContaining(term, pageable);
+			list = locationRepository.findByDescriptionContainingIgnoreCase(term, pageable);
 		} else {
 			list = locationRepository.findAll(pageable);
 		}

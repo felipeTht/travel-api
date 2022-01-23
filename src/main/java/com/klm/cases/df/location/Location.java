@@ -14,7 +14,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "locations", indexes = @Index(columnList = "description"))
+@Table(name = "Locations", indexes = @Index(columnList = "description"))
 @Data
 @Builder
 @AllArgsConstructor

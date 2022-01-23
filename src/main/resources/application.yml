@@ -12,7 +12,8 @@ spring:
   h2:
     console:
       enabled: true
-  
+  hateoas:
+    use-hal-as-default-json-media-type: false
   
 management:
   endpoints:

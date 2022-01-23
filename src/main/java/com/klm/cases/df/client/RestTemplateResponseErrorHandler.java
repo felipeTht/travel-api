@@ -10,6 +10,9 @@ import org.springframework.web.client.HttpClientErrorException.NotFound;
 import org.springframework.web.client.ResponseErrorHandler;
 import org.springframework.web.server.ResponseStatusException;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Component
 public class RestTemplateResponseErrorHandler 
   implements ResponseErrorHandler {
@@ -29,9 +32,13 @@ public class RestTemplateResponseErrorHandler
 
         if (httpResponse.getStatusCode()
           .series() == HttpStatus.Series.SERVER_ERROR) {
+        	log.error("Mock Api returned a Server Error");
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Internal Error");
         } else if (httpResponse.getStatusCode()
           .series() == HttpStatus.Series.CLIENT_ERROR) {
+        	if (httpResponse.getStatusCode() == HttpStatus.NOT_FOUND) {
+        		log.error("Mock Api returned a 404");
+        	}
         	throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Not Found");
         }
     }

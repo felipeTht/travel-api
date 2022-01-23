@@ -29,7 +29,9 @@ public class LocationController {
 	@GetMapping("/locations/paginated")
 	public ResponseEntity<PagedModel<LocationDto>> paginate(@RequestParam("term") final String term,
 													  @RequestParam("page") final int page,
-													  @RequestParam("size") final int size) {		
-		return new ResponseEntity<PagedModel<LocationDto>>(locationsevice.paginate(term, page, size), null, HttpStatus.OK);
+													  @RequestParam("size") final int size,
+													  @RequestParam("sort") final String sort,
+													  @RequestParam("direction") final String direction) {		
+		return new ResponseEntity<PagedModel<LocationDto>>(locationsevice.paginate(term, page, size, sort, direction), null, HttpStatus.OK);
 	}
 }

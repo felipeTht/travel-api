@@ -1,0 +1,18 @@
+.not-found {
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #f3feffd1;
+  border-radius: 25px;
+  h1 {
+    font-size: 75px;
+  }
+  .text {
+    margin-top: 15px;
+    margin-bottom: 33px;
+    font-weight: bold;
+    font-size: 21px;
+  }
+}

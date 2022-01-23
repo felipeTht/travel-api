@@ -12,6 +12,7 @@ import { ReservationComponent } from './feature/reservation/reservation.componen
 import { MaterialModule } from './shared/module/material.module';
 import { SharedModule } from './shared/module/shared.module';
 import { AirportsComponent } from './feature/airports/airports.component';
+import { PageNotFoundComponent } from './feature/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { AirportsComponent } from './feature/airports/airports.component';
     SearchFlightComponent,
     FareOfferComponent,
     AirportsComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,

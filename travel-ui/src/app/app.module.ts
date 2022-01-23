@@ -13,6 +13,7 @@ import { MaterialModule } from './shared/module/material.module';
 import { SharedModule } from './shared/module/shared.module';
 import { AirportsComponent } from './feature/airports/airports.component';
 import { PageNotFoundComponent } from './feature/page-not-found/page-not-found.component';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { PageNotFoundComponent } from './feature/page-not-found/page-not-found.c
     MaterialModule,
     HttpClientModule,
     SharedModule,
+    NgChartsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

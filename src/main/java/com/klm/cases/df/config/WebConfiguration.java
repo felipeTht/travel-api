@@ -5,11 +5,13 @@ import java.util.Objects;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.Resource;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.resource.PathResourceResolver;
 
 //@EnableWebMvc
+@EnableScheduling
 @Configuration
 public class WebConfiguration implements WebMvcConfigurer {
 

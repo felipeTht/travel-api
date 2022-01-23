@@ -11,6 +11,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.PagedModel;
@@ -118,7 +119,8 @@ public class LocationService {
 	public PagedModel<LocationDto> paginate(String term, int page, int size, String sort, String direction) {
 
 		String sortColumn = Arrays.asList(acceptedColumns).contains(sort) ? sort : "description";
-		Pageable pageable = PageRequest.of(page, size, Sort.by(sortColumn).descending());
+		Direction sortDirection = direction.toUpperCase().equals("DESC") ? Sort.Direction.DESC : Sort.Direction.ASC;
+		Pageable pageable = PageRequest.of(page, size, Sort.by(sortDirection, sortColumn));
 		Page<Location> list;
 
 		if (StringUtils.hasText(term)) {

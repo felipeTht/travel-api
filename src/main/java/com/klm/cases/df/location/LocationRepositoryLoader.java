@@ -34,7 +34,7 @@ public class LocationRepositoryLoader {
 		loadDataFromExternalService();
 	}
 
-	@Scheduled(cron = "0 0 0/4 1/1 * ?")
+	@Scheduled(cron = "0 */4 * * *")
 	public void loadDataScheduled() {
 		log.info("Load scheduled service for locations");
 		loadDataFromExternalService();

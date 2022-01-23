@@ -57,21 +57,15 @@ public class LocationService {
 		HashMap<String, Object> values = new HashMap<>();
 		values.put("term", term);
 
-		log.info("Calling service");
-
 		var locations = restTemplate.exchange(URL, HttpMethod.GET, null,
 				new ParameterizedTypeReference<PagedModel<EntityModel<Location>>>() {
 				}, values);
-
-		log.info("Response");
 
 		PagedModel<EntityModel<Location>> body = locations.getBody();
 		List<LocationDto> list = body.getContent().stream()
 				.map(resource -> LocationMapper.INSTANCE.locationToDto(resource.getContent()))
 				.sorted((location1, location2) -> location1.getDescription().compareTo(location2.getDescription()))
 				.toList();
-
-		log.info("List of elements" + list.size());
 
 		return list;
 	}

@@ -12,7 +12,10 @@ import com.klm.cases.df.config.TravelApiProperties;
 import com.klm.cases.df.location.LocationMapper;
 import com.klm.cases.df.location.LocationService;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service
+@Slf4j
 public class FareService {
 
 	@Autowired
@@ -27,14 +30,13 @@ public class FareService {
 	public FareDto calculate(String originCode, String destinationCode) {
 		var origin = locationService.getLocation(originCode);
 		var destination = locationService.getLocation(destinationCode);
-		var bubu = locationService.getLocation(destinationCode);
 		var fareFut = getFare(originCode, destinationCode);
 
 		FareDto fareDto = new FareDto();
 
 		try {
 
-			CompletableFuture.allOf(origin, destination, fareFut, bubu).join();
+			CompletableFuture.allOf(origin, destination, fareFut).join();
 
 			var fare = fareFut.get();
 
@@ -44,8 +46,7 @@ public class FareService {
 			fareDto.setDestination(LocationMapper.INSTANCE.locationToDto(destination.get()));
 
 		} catch (InterruptedException | ExecutionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log.error("An error occurred while retriving fare values", e);
 		}
 
 		return fareDto;

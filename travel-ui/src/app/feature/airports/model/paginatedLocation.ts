@@ -6,6 +6,6 @@ export interface Page {
 }
 
 export interface PaginatedLocation {
-  locations: Array<Location>;
+  content: Array<Location>;
   page: Page;
 }

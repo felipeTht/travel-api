@@ -112,8 +112,17 @@ export class SearchFlightComponent implements OnInit {
     return this.destinations.find((el) => el.code === code)?.description || '';
   }
 
+  private areLocationsSelected() {
+    const origin = this.form.get('origin')?.value;
+    const destination = this.form.get('destination')?.value;
+    return (
+      this.autocompleteHasValue(this.origins, origin) &&
+      this.autocompleteHasValue(this.destinations, destination)
+    );
+  }
+
   locationSelected() {
-    if (this.form.valid) {
+    if (this.form.valid && this.areLocationsSelected()) {
       this.locationsSelected.emit({
         origin: this.form.get('origin')?.value,
         destination: this.form.get('destination')?.value,

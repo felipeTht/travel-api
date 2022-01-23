@@ -1,1 +1,33 @@
-<p>dashboard works!</p>
+<mat-card class="dashboard">
+  <h1>Dashboard</h1>
+  <div style="width: 100px; height: 100px"></div>
+  <div class="charts-container" *ngIf="totalRequestsProcessed > 0">
+    <div>
+      <div class="title">
+        Total requests processed: <strong>{{ totalRequestsProcessed }}</strong>
+      </div>
+      <div class="chart">
+        <canvas
+          baseChart
+          [data]="pieChartData"
+          [type]="'pie'"
+          [options]="pieChartOptions"
+        >
+        </canvas>
+      </div>
+    </div>
+    <div>
+      <div class="title">Reponse time in ms</div>
+      <div class="chart">
+        <canvas
+          baseChart
+          [data]="barChartData"
+          [options]="barChartOptions"
+          [type]="'bar'"
+        >
+        </canvas>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="totalRequestsProcessed === 0">No data loaded</div>
+</mat-card>

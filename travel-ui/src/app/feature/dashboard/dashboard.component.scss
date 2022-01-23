@@ -1,0 +1,27 @@
+.dashboard {
+  min-height: 80vh;
+  padding: 21px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 21px;
+  h1 {
+    margin-top: 25px;
+  }
+  .charts-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    .title {
+      text-align: center;
+      font-weight: 600;
+      font-size: 17px;
+      margin-bottom: 16px;
+    }
+    .chart {
+      width: 100%;
+    }
+  }
+}

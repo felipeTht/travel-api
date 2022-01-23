@@ -1,11 +1,10 @@
 import {
   AfterViewInit,
   Component,
-  OnInit,
   ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
-import { Form, FormControl } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { merge, of } from 'rxjs';
@@ -41,10 +40,11 @@ export class AirportsComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
+    this.filter.valueChanges.subscribe(() => (this.paginator.pageIndex = 0));
 
     merge(this.sort.sortChange, this.paginator.page, this.filter.valueChanges)
       .pipe(
-        debounceTime(500),
+        debounceTime(300),
         startWith({}),
         switchMap(() => {
           this.isLoadingResults = true;
@@ -64,7 +64,7 @@ export class AirportsComponent implements AfterViewInit {
             return [];
           }
           this.resultsLength = data.page.totalElements;
-          return data.locations;
+          return data.content;
         })
       )
       .subscribe((data) => (this.data = data));

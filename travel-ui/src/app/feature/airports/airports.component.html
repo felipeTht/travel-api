@@ -4,15 +4,18 @@
     <input matInput placeholder="Description" #input [formControl]="filter" />
   </mat-form-field>
   <div class="paginator-container">
+    <div class="example-loading-shade" *ngIf="isLoadingResults">
+      <app-spinner *ngIf="isLoadingResults"></app-spinner>
+    </div>
     <div>
       <table
         mat-table
         [dataSource]="data"
         class="table"
         matSort
-        matSortActive="created"
+        matSortActive="description"
         matSortDisableClear
-        matSortDirection="desc"
+        matSortDirection="asc"
       >
         <!-- Number Column -->
         <ng-container matColumnDef="code">

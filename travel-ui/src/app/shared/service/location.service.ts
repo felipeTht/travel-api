@@ -34,17 +34,8 @@ export class LocationService {
     sort: string,
     direction: SortDirection
   ) {
-    return this.http
-      .get<PaginatedLocation>(
-        `${this.BASE_URL}/api/locations/paginated?term=${term}&page=${page}&size=${size}&sort=${sort}&direction=${direction}`
-      )
-      .pipe(
-        map((result: any) => {
-          return {
-            locations: result._embedded.locations,
-            page: result.page,
-          } as PaginatedLocation;
-        })
-      );
+    return this.http.get<PaginatedLocation>(
+      `${this.BASE_URL}/api/locations/paginated?term=${term}&page=${page}&size=${size}&sort=${sort}&direction=${direction}`
+    );
   }
 }

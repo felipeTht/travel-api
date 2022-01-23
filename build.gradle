@@ -7,7 +7,6 @@ buildscript {
 plugins {
     id 'java'
     id 'org.springframework.boot' version '2.6.1'
-    id 'net.ltgt.apt-eclipse' version "0.21"
 }
 
 repositories {
@@ -36,14 +35,22 @@ task deleteStaticFolder(type: Delete) {
 
 processResources.dependsOn('travel-ui:build')
 
+
 dependencies {
     implementation('org.springframework.boot:spring-boot-starter-web')
     implementation('org.apache.httpcomponents:httpclient:4.5.13')
     implementation('org.springframework.boot:spring-boot-starter-hateoas')
     implementation('org.mapstruct:mapstruct:1.4.2.Final')
+    implementation('org.springframework.boot:spring-boot-starter-actuator')
+    implementation('org.springframework.boot:spring-boot-starter-aop')
+    implementation('io.micrometer:micrometer-registry-prometheus:latest.release')
+    implementation('org.springframework.boot:spring-boot-starter-data-jpa')
+    implementation('com.h2database:h2')
     compileOnly('org.projectlombok:lombok')
+    compileOnly('org.mapstruct:mapstruct-processor:1.4.2.Final')
     annotationProcessor('org.mapstruct:mapstruct-processor:1.4.2.Final')
     annotationProcessor('org.projectlombok:lombok')
+    annotationProcessor('org.projectlombok:lombok-mapstruct-binding:0.2.0')
     testCompileOnly('org.projectlombok:lombok')
     testAnnotationProcessor('org.projectlombok:lombok')
     testImplementation('org.springframework.boot:spring-boot-starter-test')

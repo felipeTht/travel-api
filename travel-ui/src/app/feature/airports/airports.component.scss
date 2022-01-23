@@ -1,0 +1,44 @@
+.airports-container {
+  width: 100%;
+  padding-top: 23px;
+  min-height: 80vh;
+  display: flex !important;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  .input-container {
+    width: 90%;
+    .mat-form-field-wrapper {
+      width: 40%;
+    }
+  }
+  .paginator-container {
+    width: 90%;
+    flex: 0 0 80%;
+    .table {
+      width: 100%;
+      .code {
+        width: 10%;
+      }
+      .name {
+        width: 30%;
+      }
+      .description {
+        width: 60%;
+      }
+    }
+
+    .example-loading-shade {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 56px;
+      right: 0;
+      background: rgba(0, 0, 0, 0.15);
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

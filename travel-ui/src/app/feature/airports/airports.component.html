@@ -1,0 +1,59 @@
+<mat-card class="airports-container">
+  <mat-form-field appearance="standard" class="input-container">
+    <mat-label>Filter</mat-label>
+    <input matInput placeholder="Description" #input [formControl]="filter" />
+  </mat-form-field>
+  <div class="paginator-container">
+    <div>
+      <table
+        mat-table
+        [dataSource]="data"
+        class="table"
+        matSort
+        matSortActive="created"
+        matSortDisableClear
+        matSortDirection="desc"
+      >
+        <!-- Number Column -->
+        <ng-container matColumnDef="code">
+          <th mat-header-cell class="code" *matHeaderCellDef mat-sort-header>
+            Code
+          </th>
+          <td mat-cell class="code" *matCellDef="let row">{{ row.code }}</td>
+        </ng-container>
+
+        <!-- Title Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell class="name" *matHeaderCellDef mat-sort-header>
+            Name
+          </th>
+          <td mat-cell class="name" *matCellDef="let row">{{ row.name }}</td>
+        </ng-container>
+
+        <!-- State Column -->
+        <ng-container matColumnDef="description">
+          <th
+            mat-header-cell
+            class="description"
+            *matHeaderCellDef
+            mat-sort-header
+          >
+            Description
+          </th>
+          <td mat-cell class="description" *matCellDef="let row">
+            {{ row.description }}
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+
+    <mat-paginator
+      [length]="resultsLength"
+      [pageSize]="25"
+      aria-label="Select page of GitHub search results"
+    ></mat-paginator>
+  </div>
+</mat-card>

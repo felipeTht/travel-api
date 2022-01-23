@@ -11,6 +11,7 @@ import { SearchFlightComponent } from './feature/reservation/components/search-f
 import { ReservationComponent } from './feature/reservation/reservation.component';
 import { MaterialModule } from './shared/module/material.module';
 import { SharedModule } from './shared/module/shared.module';
+import { AirportsComponent } from './feature/airports/airports.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { SharedModule } from './shared/module/shared.module';
     HeaderComponent,
     SearchFlightComponent,
     FareOfferComponent,
+    AirportsComponent,
   ],
   imports: [
     BrowserModule,

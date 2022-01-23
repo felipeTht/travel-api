@@ -112,7 +112,7 @@ export class SearchFlightComponent implements OnInit {
     return this.destinations.find((el) => el.code === code)?.description || '';
   }
 
-  private areLocationsSelected() {
+  areLocationsSelected() {
     const origin = this.form.get('origin')?.value;
     const destination = this.form.get('destination')?.value;
     return (
@@ -121,12 +121,10 @@ export class SearchFlightComponent implements OnInit {
     );
   }
 
-  locationSelected() {
-    if (this.form.valid && this.areLocationsSelected()) {
-      this.locationsSelected.emit({
-        origin: this.form.get('origin')?.value,
-        destination: this.form.get('destination')?.value,
-      });
-    }
+  search() {
+    this.locationsSelected.emit({
+      origin: this.form.get('origin')?.value,
+      destination: this.form.get('destination')?.value,
+    });
   }
 }

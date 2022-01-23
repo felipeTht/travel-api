@@ -1,5 +1,9 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import {
+  BrowserAnimationsModule,
+  NoopAnimationsModule,
+} from '@angular/platform-browser/animations';
 import { ReservationComponent } from './reservation.component';
 
 describe('ReservationComponent', () => {
@@ -8,9 +12,13 @@ describe('ReservationComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ReservationComponent ]
-    })
-    .compileComponents();
+      imports: [
+        HttpClientModule,
+        BrowserAnimationsModule,
+        NoopAnimationsModule,
+      ],
+      declarations: [ReservationComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

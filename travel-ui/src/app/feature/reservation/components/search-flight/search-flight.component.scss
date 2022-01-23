@@ -17,6 +17,14 @@
       .destination-field {
         width: 30%;
       }
+      .search-btn {
+        width: 40%;
+        background-color: $main-color;
+        color: #fff;
+        &:hover {
+          background-color: #38a5d7;
+        }
+      }
     }
     .icon-search {
       color: $main-color;

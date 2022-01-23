@@ -15,7 +15,6 @@
         <mat-autocomplete
           autoActiveFirstOption
           #originAutocomplete="matAutocomplete"
-          (optionSelected)="locationSelected()"
           [displayWith]="getDescriptionOriginLocation.bind(this)"
         >
           <mat-option
@@ -40,7 +39,6 @@
         <mat-autocomplete
           autoActiveFirstOption
           #destinationAutocomplete="matAutocomplete"
-          (optionSelected)="locationSelected()"
           [displayWith]="getDescriptionDestinationLocation.bind(this)"
         >
           <mat-option
@@ -52,6 +50,14 @@
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
+      <button
+        mat-raised-button
+        class="search-btn"
+        [disabled]="!form.valid && !areLocationsSelected()"
+        (click)="search()"
+      >
+        Search
+      </button>
     </form>
   </div>
   <app-spinner *ngIf="loading"></app-spinner>

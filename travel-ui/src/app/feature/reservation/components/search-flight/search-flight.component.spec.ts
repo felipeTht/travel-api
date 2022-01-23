@@ -1,5 +1,11 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import {
+  BrowserAnimationsModule,
+  NoopAnimationsModule,
+} from '@angular/platform-browser/animations';
+import { MaterialModule } from 'src/app/shared/module/material.module';
 import { SearchFlightComponent } from './search-flight.component';
 
 describe('SearchFlightComponent', () => {
@@ -8,9 +14,15 @@ describe('SearchFlightComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SearchFlightComponent ]
-    })
-    .compileComponents();
+      imports: [
+        ReactiveFormsModule,
+        HttpClientModule,
+        MaterialModule,
+        BrowserAnimationsModule,
+        NoopAnimationsModule,
+      ],
+      declarations: [SearchFlightComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

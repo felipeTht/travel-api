@@ -27,7 +27,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+        cache-dependency-path: travel-ui/package-lock.json
     - run: npm ci
-      working-directory: ./travel-ui
     - run: npm run test:prod
-      working-directory: ./travel-ui

@@ -14,6 +14,6 @@ Start it (on windows systems use the gradlew.bat file):
   - *Airports list*: Here you can have all the airports paginated, you can make search by term or sort by the item you choose.
   http://localhost:9000/airports
 
-  - *Dashboard*: Here you can take a look for the backend statics.
+  - *Dashboard*: Here you can take a look for the backend statistics.
   http://localhost:9000/dashboard
 

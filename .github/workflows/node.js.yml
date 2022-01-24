@@ -18,8 +18,7 @@ jobs:
         working-directory: ./travel-ui
     strategy:
       matrix:
-        node-version: [12.x, 14.x, 16.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+        node-version: [14.x]
 
     steps:
     - uses: actions/checkout@v2
@@ -29,4 +28,6 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
+      working-directory: ./travel-ui
     - run: npm run test:prod
+      working-directory: ./travel-ui

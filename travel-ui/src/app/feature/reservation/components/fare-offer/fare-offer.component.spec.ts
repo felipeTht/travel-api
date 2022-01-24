@@ -1,3 +1,4 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FareOfferComponent } from './fare-offer.component';
@@ -8,9 +9,9 @@ describe('FareOfferComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FareOfferComponent ]
-    })
-    .compileComponents();
+      declarations: [FareOfferComponent],
+      schemas: [NO_ERRORS_SCHEMA],
+    }).compileComponents();
   });
 
   beforeEach(() => {

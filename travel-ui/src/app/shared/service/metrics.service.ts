@@ -11,7 +11,7 @@ export class MetricsService {
 
   constructor(private http: HttpClient) {}
 
-  get() {
+  getMetrics() {
     return this.http.get<Metrics>(`${this.BASE_URL}/metrics`);
   }
 }

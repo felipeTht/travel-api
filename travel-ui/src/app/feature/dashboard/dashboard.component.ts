@@ -43,7 +43,7 @@ export class DashboardComponent implements OnInit {
   constructor(private metricService: MetricsService) {}
 
   ngOnInit(): void {
-    this.metricService.get().subscribe((resp) => {
+    this.metricService.getMetrics().subscribe((resp) => {
       const { okStatusRespNumber, notFoundRespNumber, errorRespNumber } = resp;
       this.totalRequestsProcessed =
         okStatusRespNumber + notFoundRespNumber + errorRespNumber;

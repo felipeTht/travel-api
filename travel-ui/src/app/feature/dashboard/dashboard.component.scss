@@ -25,3 +25,14 @@
     }
   }
 }
+
+@media screen and (max-width: 640px) {
+  .dashboard {
+    .charts-container {
+      flex-direction: column;
+      > div {
+        margin-top: 33px;
+      }
+    }
+  }
+}

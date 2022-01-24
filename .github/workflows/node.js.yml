@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ng-toolkit 
+        working-directory: ./travel-ui
     strategy:
       matrix:
         node-version: [12.x, 14.x, 16.x]
@@ -29,6 +29,4 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
-      working-directory: /travel-ui
     - run: npm run test:prod
-      working-directory: /travel-ui

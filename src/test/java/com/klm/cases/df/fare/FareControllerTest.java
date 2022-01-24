@@ -16,6 +16,8 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.klm.cases.df.location.LocationDto;
+import com.klm.cases.df.metrics.MetricService;
+
 
 @WebMvcTest(value = FareController.class)
 public class FareControllerTest {
@@ -27,6 +29,9 @@ public class FareControllerTest {
 
 	@MockBean
 	private FareService fareService;
+	
+	@MockBean
+	private MetricService metricService;
 
 	@Test
 	public void itShouldReturnLocationAndFare() throws Exception {

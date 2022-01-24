@@ -20,6 +20,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.klm.cases.df.metrics.MetricService;
 
 @WebMvcTest(value = LocationController.class)
 public class LocationControllerTest {
@@ -32,6 +33,9 @@ public class LocationControllerTest {
 
 	@MockBean
 	private LocationService locationService;
+	
+	@MockBean
+	private MetricService metricService;
 
 	@Test
 	public void itShouldReturnListWithLocationsIfLocationFounds() throws Exception {
